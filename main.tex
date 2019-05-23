@@ -1,0 +1,62 @@
+\documentclass[a4paper,12pt]{article} %размер бумаги устанавливаем А4, шрифт 12пунктов
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}	%кодировка
+\usepackage[english,russian]{babel}%используем русский и английский языки с переносами
+\usepackage{amssymb,amsfonts,amsmath,cite,enumerate,float,indentfirst} %пакеты расширений
+\usepackage{graphicx} %вставка графики
+\usepackage{sectsty,textcase}
+\usepackage{graphics}
+
+\graphicspath{{images/}}%путь к рисункам
+\linespread{1.5}
+\floatname{Times New Roman}{}
+
+\makeatletter
+\renewcommand{\@biblabel}[1]{#1.} % Заменяем библиографию с квадратных скобок на точку:
+\renewcommand{\labelitemi}{--} % Заменяем стандартный символ маркированного списка
+
+% Переопределение команды секции
+\renewcommand{\section}{\@startsection{section}{1}%
+{\parindent}{3.25ex plus 1ex minus .2ex}%
+{1.5ex plus .2ex}{\bfseries\large\centering\MakeTextUppercase}}
+
+% Переопределение команды подсекции
+\renewcommand{\subsection}{\@startsection{subsection}{2}%
+{\parindent}{3.25ex plus 1ex minus .2ex}%
+{1.5ex plus .2ex}{\bfseries\centering\MakeTextUppercase}}
+\makeatother
+
+\usepackage{geometry} % Меняем поля страницы
+\geometry{left=3cm}% левое поле
+\geometry{right=1.5cm}% правое поле
+\geometry{top=2cm}% верхнее поле
+\geometry{bottom=2cm}% нижнее поле
+
+\renewcommand{\theenumi}{\arabic{enumi}}% Меняем везде перечисления на цифра.цифра
+\renewcommand{\labelenumi}{\arabic{enumi}}% Меняем везде перечисления на цифра.цифра
+\renewcommand{\theenumii}{.\arabic{enumii}}% Меняем везде перечисления на цифра.цифра
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}.}% Меняем везде перечисления на цифра.цифра
+\renewcommand{\theenumiii}{.\arabic{enumiii}}% Меняем везде перечисления на цифра.цифра
+\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.}% Меняем везде перечисления на цифра.цифра
+
+\newcommand{\imgh}[3]{\begin{figure}[h]\center{\includegraphics[width=#1]{#2}}\caption{#3}\label{ris:#2}\end{figure}} % команда для добавления изображений
+
+\newcommand{\anonsection}[1]{\section*{#1}\addcontentsline{toc}{section}{#1}} % секция для введения и заключения
+
+\begin{document}
+\pagestyle{empty}
+\input{RefProject-Title}% титульный лист
+\newpage
+\tableofcontents % оглавление, которое генерируется автоматически
+\newpage
+\setcounter{page}{3}
+\pagestyle{plain}
+
+\input{RefProject-Intro}% введение
+\newpage
+\input{RefProject-Sections}% основной текст документа
+\newpage
+\input{RefProject-Finish}% заключение
+\newpage
+\input{RefProject-Biblio}
+\end{document}
